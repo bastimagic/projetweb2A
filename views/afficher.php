@@ -333,7 +333,7 @@ $list_cmd=$comm->affichercommande();
                                           <td><?PHP echo $row['etat']; ?></td>
                                           <td>
                                         <form action="trait.php" method="post" name="myForm" onsubmit="return validateForm()"  >
-                                         <input type="text" class="Test"   id = "comment" name= "commnt" value="<?PHP echo $row['comment']; ?>"></input>
+                                         <input type="text" class="Test" name= "commnt" id="commnt" value="<?PHP echo $row['comment']; ?>"></input>
                                         </td>
                                         <td>
                                           <input type="submit" name="Approved" value="Approved" class="btn btn-primary btn-xs" >
@@ -475,7 +475,7 @@ $list_cmd=$comm->affichercommande();
 
 
 function validateForm() {
-  var x = document.forms["myForm"]["commnt"].value;
+  var x =  document.getElementById("myAnchor").focus();
   if (x.length < 5) {
     alert("Min 5 Char !!");
     return false;
@@ -485,6 +485,7 @@ function validateForm() {
     return false;
   }
 }
+
 
 
     </script>
