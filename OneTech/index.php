@@ -117,13 +117,13 @@ $result4=$db->query('select * from categorie');
 					</div>
 
 					<!-- Wishlist -->
+							<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
 								<div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
 								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
+									<div class="wishlist_text"><a href="Commande.php">Commandes</a></div>
 								</div>
 							</div>
 
@@ -135,7 +135,7 @@ $result4=$db->query('select * from categorie');
 										<div class="cart_count"><span>10</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="#">Cart</a></div>
+										<div class="cart_text"><a href="cart.php">Cart</a></div>
 										<div class="cart_price">85DT</div>
 									</div>
 								</div>
@@ -551,7 +551,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+														<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="245">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -576,7 +579,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button active">Add to Cart</button>
+													<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="12">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -601,7 +607,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+														<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="36">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -626,7 +635,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+														<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="42">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -651,7 +663,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+											<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="218">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -676,7 +691,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+															<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="3">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -701,7 +719,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+															<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="148">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -726,7 +747,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+															<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="98">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -751,7 +775,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+															<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="120">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -776,7 +803,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+														<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="365">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -801,7 +831,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+															<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="799">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -826,7 +859,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+														<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="156">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -851,7 +887,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+															<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="320">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -876,8 +915,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
-												</div>
+											<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="24">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
 											<ul class="product_marks">
@@ -901,7 +942,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+															<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="70">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -926,7 +970,10 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<button class="product_cart_button">Add to Cart</button>
+															<form method="get" action="ajoutertopanier.php" >
+													<input type="hidden" name="id" value="112">
+													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
+													</form>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>

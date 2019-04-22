@@ -172,8 +172,8 @@ while ($row = $result->fetch())
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des commandes </a>
                         <ul class="sub-menu children dropdown-menu">
                             
-                            <li><i class="fa fa-table"></i><a href="tables-commande.html">Liste des commandes </a></li>
-							<li><i class="fa fa-table"></i><a href="ajout-commande.html">Ajouter une commande </a></li>
+                            <li><i class="fa fa-table"></i><a href="afficher.php">commandes  et paniers</a></li>
+	
 							
                         </ul>
                     </li>

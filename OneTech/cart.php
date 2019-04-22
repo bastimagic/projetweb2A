@@ -9,7 +9,7 @@ $cookie_name = "panier";
 
 if(!isset($_COOKIE[$cookie_name])) {
 
-     echo "aucun panier !!";
+    echo "";
 
 } else {
 
@@ -137,8 +137,7 @@ if(!isset($_COOKIE[$cookie_name])) {
 							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
 								<div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
 								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
+									<div class="wishlist_text"><a href="Commande.php">Commandes</a></div>
 								</div>
 							</div>
 
@@ -442,7 +441,7 @@ if(!isset($_COOKIE[$cookie_name])) {
 
               <?php
                 echo '<form method ="post" action ="passcommande.php">
-                    <input type="submit" name="commande"  class="button cart_button_checkout" value="Add to Cart"></input>
+                    <input type="submit" name="commande"  class="button cart_button_checkout" value="Checkout"></input>
                     </form>';
                ?>
 
