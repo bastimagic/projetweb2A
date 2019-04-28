@@ -1,7 +1,7 @@
 <?php
 include "../config.php";
 $db=config::getConnexion();
-$result=$db->query('select * from produit order by idP desc');
+$result=$db->query('select * from produit p inner join categorie c where p.idC = c.idC order by idP desc');
 ?>
 
 <?php  
@@ -23,7 +23,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>ID bureau</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -45,10 +45,8 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 </head>
 
 <body>
-    <!-- Left Panel -->
 
-    
-    <aside id="left-panel" class="left-panel">
+     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
 
             <div class="navbar-header">
@@ -62,7 +60,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     
@@ -74,23 +72,54 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
                             <li><i class="fa fa-table"></i><a href="ajout-client.html">Ajouter un client</a></li>
                             
                         </ul>
-                    </li>
+                 
                      <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des produits </a>
                         <ul class="sub-menu children dropdown-menu">
                             
                             <li><i class="fa fa-table"></i><a href="tables-produits.php">Liste des produits</a></li>
-                            <li><i class="fa fa-table"></i><a href="ajout-produit.html">Ajouter un produit</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-produit.php">Ajouter un produit</a></li>
+                            
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des Gategories </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            
+                            <li><i class="fa fa-table"></i><a href="tables-categorie.php">Liste des Categorie</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-categorie.html">Ajouter une Categorie</a></li>
+                            
+                        </ul>
+                    </li>
+
+  <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des fournisseurs </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            
+                            <li><i class="fa fa-table"></i><a href="tables-fournisseurs.php">Liste des fournisseurs</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-fournisseur.php">Ajouter un fournisseur</a></li>
+                            
+                        </ul>
+                    </li>
+                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des livraisons </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            
+                            <li><i class="fa fa-table"></i><a href="tablelivraison.php">Liste des livraisons</a></li>
+                            <li><i class="fa fa-table"></i><a href="example_attachments.php">Mail</a></li>
+                            <li><i class="fa fa-table"></i><a href="test.php">PDF</a></li>
+                            <li><i class="fa fa-table"></i><a href="statistique.php">Statistique</a></li>
                             
                         </ul>
                     </li>
 
                      <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des livraisons </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des Livreurs </a>
                         <ul class="sub-menu children dropdown-menu">
                             
-                            <li><i class="fa fa-table"></i><a href="tabes-promotions.html">Liste des livraisons</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Ajouter une livraison</a></li>
+                            <li><i class="fa fa-table"></i><a href="tablelivreur.php">Liste des livreur </a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-livreur.html">Ajouter un livreur </a></li>
                             
                         </ul>
                     </li>
@@ -121,7 +150,6 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
             </div><!-- /.navbar-collapse -->
         </nav>
     </aside>
-
     <!-- Left Panel -->
 
     <!-- Right Panel -->
@@ -335,7 +363,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
                                             <td><?php echo $row['descP']; ?></td>
                                             <td><?php echo $row['qteP']; ?></td>
                                             <td><?php echo $row['prixP']; ?></td>
-                                            <td><?php echo $row['categorieP']; ?></td>
+                                            <td><?php echo $row['nomC']; ?></td>
                                             <td>  
                 <a href="modifierproduit.php?edit=<?php echo $row['idP']; ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                 

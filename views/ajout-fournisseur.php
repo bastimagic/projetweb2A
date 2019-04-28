@@ -1,3 +1,9 @@
+<?php
+include "../config.php";
+$db=config::getConnexion();
+$result1=$db->query('select * from categorie');
+?>
+
 <!doctype html>
 
 <html class="no-js" lang="en">
@@ -267,22 +273,64 @@
         </header><!-- /header -->
         <!-- Header-->
 
- <form method="POST" action="ajoutcategorie.php">
+ <form method="POST" action="ajoutfournisseur.php">
 
           <div class="card-header">
-              <strong> Ajouter une categorie</strong> Détails
+              <strong> Ajouter un fournisseur</strong> Détails
             </div>
                                                     <div class="card-body card-block">
                                                  
                                                             
                                                             <div class="row form-group">
-                                                                <div class="col col-md-3"><label class=" form-control-label">Nom categorie</label></div>
-                                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="nomC"  class="form-control"><small class="form-text text-muted"></small></div>
+                                                                <div class="col col-md-3"><label class=" form-control-label">Nom du fournisseur  </label></div>
+                                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="nomF"  class="form-control"><small class="form-text text-muted"></small></div>
                                                                 <div class="col-12 col-md-9">
                                                                   
                                                                 </div>
                                                             </div>
 
+
+                                                       
+                                                         <div class="row form-group">
+                                                                <div class="col col-md-3"><label for="text-input" class=" form-control-label">Adresse du fournisseur</label></div>
+                                                                <div class="col-12 col-md-9"><input type="text" id="text-input" name="adresseF" id='nomfournisseur' class="form-control"><small class="form-text text-muted"></small></div>
+                                                                <span id='missPrenom'></span><br>
+
+                                                            </div>
+                                                        <div class="row form-group">
+                                                                <div class="col col-md-3"><label class=" form-control-label">Tel du fournisseur</label></div>
+                                                                <div class="col-12 col-md-9"><input type="number" id="text-input" name="telF"  class="form-control"><small class="form-text text-muted"></small></div>
+                                                                <div class="col-12 col-md-9">
+
+                                                                  
+                                                                </div>
+                                                            </div>    
+
+                                                       
+
+                                                               
+                                
+                         <div class="row form-group">             
+                        <div class="col col-md-3"><label class=" form-control-label" >Catégorie du produit </label></div>
+                            
+                            
+                           <div class="col-12 col-md-9">
+                               <select  class="standardSelect" tabindex="10"  name="idC" id="idC">
+                                ><small class="form-text text-muted">
+                                               <?php
+                                foreach ($result1 as $key) {
+                                    # code...
+                                ?>         
+                                    
+                                    <option value="<?php echo $key['idC'];?>"><?php echo $key['nomC'];?></option>
+
+                                   
+                                        <?php } ?>
+                                    </small>
+                                </select>
+                               </div>
+                               </div> 
+                                                            
                                                     <div class="card-footer">
                                                         <button type="submit" class="btn btn-primary btn-sm" id= "Envoyer" onsubmit="return myFunction()">
                                                             <i "fa fa-dot-circle-o"></i> Envoyer
@@ -297,7 +345,8 @@
     <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="formulaire-produit.js"></script>
+
+   <script src="formulaire-produit.js"></script>
     <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>

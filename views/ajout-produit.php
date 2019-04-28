@@ -50,7 +50,7 @@ $result1=$db->query('select * from categorie');
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     
@@ -72,12 +72,23 @@ $result1=$db->query('select * from categorie');
                             
                         </ul>
                     </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des Gategories </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            
+                            <li><i class="fa fa-table"></i><a href="tables-categorie.php">Liste des Categorie</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-categorie.html">Ajouter une Categorie</a></li>
+                            
+                        </ul>
+                    </li>
+
   <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des fournisseurs </a>
                         <ul class="sub-menu children dropdown-menu">
                             
                             <li><i class="fa fa-table"></i><a href="tables-fournisseurs.php">Liste des fournisseurs</a></li>
-                            <li><i class="fa fa-table"></i><a href="ajout-fournisseur.html">Ajouter un fournisseur</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-fournisseur.php">Ajouter un fournisseur</a></li>
                             
                         </ul>
                     </li>
@@ -306,12 +317,14 @@ $result1=$db->query('select * from categorie');
                                                                 <div class="col-12 col-md-9"><input type="number" id="prixP" name="prixP"  class="form-control"><small class="help-block form-text"></small></div>
                                                             </div>
 
-                                                               <div class="row form-group">
-                               <div class="col col-md-3"><label >Catégorie du produit </label></div>
-                            </div>
+                                                               
+                              <div class="row form-group">             
+                        <div class="col col-md-3"><label class=" form-control-label" >Catégorie du produit </label></div>
                             
-
+                            
+                           <div class="col-12 col-md-9">
                                <select  class="standardSelect" tabindex="10"  name="idC" id="idC">
+                                ><small class="form-text text-muted">
                                                <?php
                                 foreach ($result1 as $key) {
                                     # code...
@@ -321,7 +334,10 @@ $result1=$db->query('select * from categorie');
 
                                    
                                         <?php } ?>
+                                    </small>
                                 </select>
+                               </div>
+                               </div> 
                                 
                                   
                           <!--  <div class="row form-group">

@@ -1,21 +1,34 @@
-
 <?php
 include "../config.php";
 $db=config::getConnexion();
-$catid = $_GET['cat'];
-$cat = $_GET['cat'];
+$db->query("SET NAMES UTF8");
+
+if (isset($_GET["s"]) AND $_GET["s"] == "Rechercher")
+{
+ $_GET["terme"] = htmlspecialchars($_GET["terme"]); //pour sécuriser le formulaire contre les intrusions html
+ $terme = $_GET["terme"];
+ $terme = trim($terme); //pour supprimer les espaces dans la requête de l'internaute
+ $terme = strip_tags($terme); //pour supprimer les balises html dans la requête
+
+ if (isset($terme))
+ {
+  $terme = strtolower($terme);
+  $select_terme = $db->prepare("SELECT nomP,prixP,imageP,idP FROM produit WHERE nomP LIKE ? OR prixP LIKE ? OR prixP LIKE ? OR idP LIKE ?");
+  $select_terme->execute(array("%".$terme."%", "%".$terme."%","%".$terme."%", "%".$terme."%"));
+ }
+ else
+ {
+  $message = "Vous devez entrer votre requete dans la barre de recherche";
+ }
+}
+
 $result=$db->query('select * from categorie');
 $result1=$db->query('select * from categorie');
 $result6=$db->query('select * from categorie');
 $result4=$db->query('select * from categorie');
-$result2=$db->query("SELECT * from produit where idC='$catid' ");
-$query=$db->prepare('SELECT * from produit p inner join categorie c where p.idC=c.idC and p.idC=:cat');
-$query->bindValue(':cat',$cat);
-$query->execute();
-$result3=$query->fetch();
+
 $Pfound=0;
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,15 +47,7 @@ $Pfound=0;
 <link rel="stylesheet" type="text/css" href="styles/shop_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/shop_responsive.css">
 <link rel="shortcut icon" href="LogoID.ico">
-<script>
-	var logID = 'log',
-  log = $('<div id="'+logID+'"></div>');
-$('body').append(log);
-  $('[type*="radio"]').change(function () {
-    var me = $(this);
-    log.html(me.attr('value'));
-  });
-</script>
+
 </head>
 
 <body>
@@ -100,7 +105,8 @@ $('body').append(log);
 					</div>
 
 
-							<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+					<!-- Search -->
+					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
@@ -120,7 +126,6 @@ $('body').append(log);
 							</div>
 						</div>
 					</div>
-
 
 					<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
@@ -341,7 +346,7 @@ $('body').append(log);
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/shop_background.jpg"></div>
 		<div class="home_overlay"></div>
 		<div class="home_content d-flex flex-column align-items-center justify-content-center">
-			<h2 class="home_title"><?php echo $result3['nomC'];?></h2>
+			<h2 class="home_title">Search</h2>
 		</div>
 	</div>
 
@@ -354,14 +359,15 @@ $('body').append(log);
 
 					<!-- Shop Sidebar -->
 					<div class="shop_sidebar">
-						
 						<div class="sidebar_section filter_by_section">
 							<div class="sidebar_title">Filter By</div>
 							<div class="sidebar_subtitle">Price</div>
 							<div class="filter_price">
+								
 								<div id="slider-range" class="slider_range"></div>
+
 								<p>Range: </p>
-								<p><input type="text" id="amount" class="amount" readonly style="border:0; font-weight:bold;"></p>
+								<p><input type="text" id="amount" name="slider" class="amount" readonly style="border:0; font-weight:bold;"></p>
 							</div>
 						</div>
 						
@@ -381,8 +387,7 @@ $('body').append(log);
 					</div>
 
 				</div>
-
-				<div class="col-lg-9">
+<div class="col-lg-9">
 					
 					<!-- Shop Content -->
 
@@ -391,22 +396,23 @@ $('body').append(log);
 					<div class="product_grid">
 							
 							<div class="product_grid_border"></div>
+							
 
 <?php
-								foreach ($result2 as $key) {
-									$Pfound= $Pfound+1;
-								?>
+								while($terme_trouve = $select_terme->fetch())
+ {
+  $Pfound= $Pfound+1;
+   ?>
 							<!-- Product Item -->
 
 							<div class="product_item">
-								
-								<div class="product_border"></div><a href="product.php?cat=<?php echo $key['idP'];?>" tabindex="0">
+								<div class="product_border"></div><a href="product.php?cat=<?php echo "" .$terme_trouve['idP']. ""?>" tabindex="0">
    
 								
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/<?php echo $key['imageP'];?> " alt="ghvgj"></div>
+								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="images/<?php echo "" .$terme_trouve['imageP']. ""?>" alt="ghvgj"></div>
 								<div class="product_content">
-									<div class="product_price" style="color: #F9870B;">$<?php echo $key['prixP'] ;?></div>
-									<div class="product_name"><div><a href="" tabindex="0"><?php echo $key['nomP'];?></a></div></div>
+									<div class="product_price" style="color: #F9870B;"><?php echo "" .$terme_trouve['prixP']. "" ;?>DT</div>
+									<div class="product_name"><div><a href="" tabindex="0"><?php echo "" .$terme_trouve['nomP']. ""?></a></div></div>
 								
 								</div>
 
@@ -418,7 +424,13 @@ $('body').append(log);
 							</a>
 							</div>
 
-<?php } ?> 
+<?php } $select_terme->closeCursor(); ?> 
+
+
+
+						
+							
+
 
                         <div class="shop_content">
 						<div class="shop_bar clearfix">
@@ -568,7 +580,6 @@ $('body').append(log);
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>
-
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>

@@ -7,10 +7,10 @@ include "../config.php";
  $descP=$_POST['descP'];
  $qteP=$_POST['qteP'];
  $prixP=$_POST['prixP'];
- $categorieP=$_POST['categorieP'];
+ $idC=$_POST['idC'];
 
 $db=config::getConnexion();
-$result=$db->prepare("UPDATE produit SET `imageP`='$imageP' , `nomP`='$nomP' , `descP`='$descP' , `qteP`='$qteP' , `prixP`='$prixP' , `categorieP`='$categorieP' WHERE `produit`.`idP`='$idP' ");
+$result=$db->prepare("UPDATE produit SET `imageP`='$imageP' , `nomP`='$nomP' , `descP`='$descP' , `qteP`='$qteP' , `prixP`='$prixP' , `idC`='$idC' WHERE `produit`.`idP`='$idP' ");
 $result->execute();
 header('location: tables-produits.php');
 

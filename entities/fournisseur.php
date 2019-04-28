@@ -4,14 +4,15 @@ class fournisseur{
 	private $idF;
 	private $adresseF;
 	private $telF;
+	private $idC;
 	
 
-	function __construct($nomF,$idF,$adresseF,$telF){
+	function __construct($nomF,$idF,$adresseF,$telF,$idC){
 		$this->nomF=$nomF;
 		$this->idF=$idF;
 		$this->adresseF=$adresseF;
 		$this->telF=$telF;
-	
+	    $this->idC=$idC;
 	}
 	
 	function getnomF(){
@@ -26,6 +27,10 @@ class fournisseur{
 	function gettelF(){
 		return $this->telF;
 	}
+
+	function getidC(){
+		return $this->idC;
+	}
 	
 	
     function setnomF($nomF){
@@ -39,6 +44,9 @@ class fournisseur{
 	}
 	function setidF($idF){
 		$this->idF=$idF;
+	}
+	function setidC($idC){
+		$this->idC=$idC;
 	}
 	
 	

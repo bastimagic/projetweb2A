@@ -4,6 +4,7 @@ $db=config::getConnexion();
 $result=$db->query('select * from categorie');
 $result1=$db->query('select * from categorie');
 $result4=$db->query('select * from categorie');
+
 ?>
 
 
@@ -28,6 +29,7 @@ $result4=$db->query('select * from categorie');
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 <link rel="stylesheet" type="text/css" href="styles/logo.css">
 <link rel="shortcut icon" href="LogoID.ico">
+
 
 </head>
 
@@ -59,6 +61,10 @@ $result4=$db->query('select * from categorie');
 									<li>
 										<a href="#">DT TUNIS<i class="fas fa-chevron-down"></i></a>
 									</li>
+									<!-- chatbot-->
+									
+			
+								</div>
 								</ul>
 							</div>
 							<div class="top_bar_user">
@@ -90,26 +96,17 @@ $result4=$db->query('select * from categorie');
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+									<form action="resultat.php" class="header_search_form clearfix" method="GET">
+										<input type="search" required="required" name="terme" class="header_search_input" placeholder="Search for products...">
 										<div class="custom_dropdown">
-											<div class="custom_dropdown_list">
+											
 												<span class="custom_dropdown_placeholder clc">All Categories</span>
-												<i class="fas fa-chevron-down"></i>
-
-									
 												<ul class="custom_list clc">
-													<?php
-								foreach ($result1 as $key) {
-									# code...
-								?>
-													<li><a class="clc" href="shop.php?cat=<?php echo $key['idC'];?>"><?php echo $key['nomC'];?></a></li>
-													<?php } ?>
+													
 												</ul>
 											
-											</div>
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="images/search.png" alt=""></button>
+										<button type="submit" name="s" class="header_search_button trans_300" value="Rechercher"><img src="images/search.png" alt=""></button>
 									</form>
 								</div>
 							</div>
@@ -117,13 +114,13 @@ $result4=$db->query('select * from categorie');
 					</div>
 
 					<!-- Wishlist -->
-							<!-- Wishlist -->
 					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
 						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
 							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
 								<div class="wishlist_icon"><img src="images/heart.png" alt=""></div>
 								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="Commande.php">Commandes</a></div>
+									<div class="wishlist_text"><a href="#">Wishlist</a></div>
+									<div class="wishlist_count">115</div>
 								</div>
 							</div>
 
@@ -135,7 +132,7 @@ $result4=$db->query('select * from categorie');
 										<div class="cart_count"><span>10</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="cart.php">Cart</a></div>
+										<div class="cart_text"><a href="#">Cart</a></div>
 										<div class="cart_price">85DT</div>
 									</div>
 								</div>
@@ -551,10 +548,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-														<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="245">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -579,10 +573,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-													<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="12">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button active">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -607,10 +598,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-														<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="36">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -635,10 +623,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-														<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="42">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -663,10 +648,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-											<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="218">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -691,10 +673,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-															<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="3">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -719,10 +698,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-															<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="148">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -747,10 +723,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-															<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="98">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -775,10 +748,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-															<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="120">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -803,10 +773,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-														<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="365">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -831,10 +798,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-															<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="799">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -859,10 +823,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-														<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="156">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -887,10 +848,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-															<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="320">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -915,10 +873,8 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-											<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="24">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>												</div>
+													<button class="product_cart_button">Add to Cart</button>
+												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
 											<ul class="product_marks">
@@ -942,10 +898,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-															<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="70">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -970,10 +923,7 @@ $result4=$db->query('select * from categorie');
 														<input type="radio" name="product_color" style="background:#000000">
 														<input type="radio" name="product_color" style="background:#999999">
 													</div>
-															<form method="get" action="ajoutertopanier.php" >
-													<input type="hidden" name="id" value="112">
-													<input type="submit" name="ajouter" value="Add to Cart"  class="product_cart_button active">
-													</form>
+													<button class="product_cart_button">Add to Cart</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -2054,8 +2004,6 @@ $result4=$db->query('select * from categorie');
 					</div>
 				</div>
 
-				
-
 				<div class="col-lg-2">
 					<div class="footer_column">
 						<div class="footer_title">Customer Care</div>
@@ -2071,11 +2019,121 @@ $result4=$db->query('select * from categorie');
 					</div>
 				</div>
 
+				<div class="col-lg-2">
+					<div class="footer_column">
+						<div class="footer_title">Besoin d'aide ?</div>
+						<ul class="footer_list">
+						<li><input id="input" type="text" style="display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  box-sizing: border-box;" placeholder=" say anything..." autocomplete="off"/></li>
+							<li><a style="font-weight: 400;">User: <span id="user"></span></a></li>
+							<li><a style="font-weight: 400;">Chatbot: <span id="chatbot"></span></a></li>
+						</ul>	
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</footer>
+<script>
+	var trigger = [
+    ["bonjour","salut","hello","hey"],
+    ["comment vas tu", "ca va", "comment vas la vie"],
+    ["que pourrais je acheter","quoi acheter", "j achete quoi"],
+    ["trente dinar"],
+    ["cinquante dinar"],
+    ["quatre vingt dinar"],
+    ["qui es tu"],
+    ["es tu un bot"],
+    ["es tu un humain ou un bot"],
+    ["es tu humain"],
+    ["qui tas cree", "qui tas fait"],
+    ["je taime"],
+    ["je vais bien"],
+    ["je ne vais pas bien"],
+    ["raconte moi une blague"],
+    ["haha","hahahaha","hahaha","hahahahahaha","hahahahaha"],
+    ["bye","au revoir","adieu"],
+    ["comment pouvoir acheter"],
+    ["daccord"],
+    ["dis moi plus sur ce site","cest quoi ce site","vous vendez quoi"]
 
+];
+var reply = [
+    ["Bonjour","Salut","Bienvenue"],
+    ["Bien", "Très Bien, merci", "Fantastique"],
+    ["Ça dépend de ton budget"],
+    ["Tu peux prendre le sac classique"],
+    ["Tu peux prendre le sac classique ou le sac revisité"],
+    ["Tu peux prendre n'importe quel sac"],
+    ["On m'appelle sousou"],
+    ["Certains m'appellent comme ça, Oui"],
+    ["Un bot"],
+    ["Surement pas"],
+    ["Baccouche Omar"],
+    ["Je n'ai pas de sentiment, pardon", "J'aimerai ressentir la même chose, mais je ne peux pas"],
+    ["Content de l'apprendre"],
+    ["Pourquoi? il faut positiver dans la vie"],
+    ["Nous n'avons pas le même humour, moi ce qui me fait rire, c'est les bits"],
+    ["J'ai réussi à te faire rire askip"],
+    ["Bye","Au revoir","A la prochaine"],
+    ["En t'inscrivant"],
+    ["J'espère t'avoir aidé"],
+    ["C'est le site de vente en ligne de l'entreprise IDbureau, c'est une papetrie."]
+
+];
+var alternative = ["Ma deyem walou", "Aziz sayeb est une pute"];
+document.querySelector("#input").addEventListener("keypress", function(e){
+    var key = e.which || e.keyCode;
+    if(key === 13){ //Enter button
+        var input = document.getElementById("input").value;
+        document.getElementById("user").innerHTML = input;
+        output(input);
+    }
+});
+function output(input){
+    try{
+        var product = input + "=" + eval(input);
+    } catch(e){
+        var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, ""); //remove all chars except words, space and
+        text = text.replace(/ a /g, " ").replace(/i feel /g, "").replace(/whats/g, "what is").replace(/please /g, "").replace(/ please/g, "");
+        if(compare(trigger, reply, text)){
+            var product = compare(trigger, reply, text);
+        } else {
+            var product = alternative[Math.floor(Math.random()*alternative.length)];
+        }
+    }
+    document.getElementById("chatbot").innerHTML = product;
+    speak(product);
+    document.getElementById("input").value = ""; //clear input value
+}
+function compare(arr, array, string){
+    var item;
+    for(var x=0; x<arr.length; x++){
+        for(var y=0; y<array.length; y++){
+            if(arr[x][y] == string){
+                items = array[x];
+                item =  items[Math.floor(Math.random()*items.length)];
+            }
+        }
+    }
+    return item;
+}
+function speak(string){
+    var utterance = new SpeechSynthesisUtterance();
+    utterance.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == "Eszter Compact";})[0];
+    utterance.text = string;
+    utterance.lang = "fr-FR";
+    utterance.volume = 1; //0-1 interval
+    utterance.rate = 1;
+    utterance.pitch = 2; //0-2 interval
+    speechSynthesis.speak(utterance);
+}
+
+</script>
 <script src="js/jquery-3.3.1.min.js"></script>
+
 <script src="styles/bootstrap4/popper.js"></script>
 <script src="styles/bootstrap4/bootstrap.min.js"></script>
 <script src="plugins/greensock/TweenMax.min.js"></script>
@@ -2087,6 +2145,7 @@ $result4=$db->query('select * from categorie');
 <script src="plugins/slick-1.8.0/slick.js"></script>
 <script src="plugins/easing/easing.js"></script>
 <script src="js/custom.js"></script>
+
 </body>
 
 </html>

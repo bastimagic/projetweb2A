@@ -2,14 +2,12 @@
 class categorie{
 	private $nomC;
 	private $idC;
-	private $lienC;
 
 
-	function __construct($nomC,$idC,$lienC){
+
+	function __construct($nomC,$idC){
 		$this->nomC=$nomC;
 		$this->idC=$idC;
-		$this->lienC=$lienC;	
-	
 	}
 	
 	function getnomC(){
@@ -17,9 +15,6 @@ class categorie{
 	}
 	function getidC(){
 		return $this->idC;
-	}
-	function getlienC(){
-		return $this->lienC;
 	}
 	
     function setnomC($nomC){
@@ -29,10 +24,7 @@ class categorie{
 	function setidC($idC){
 		$this->idC=$idC;
 	}
-	function setlienC($lienC){
-		return $this->lienC;
-	}
-	
+
 }
 
 ?>

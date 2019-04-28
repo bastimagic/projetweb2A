@@ -6,16 +6,18 @@ function afficherfournisseur ($fournisseur){
 		echo "nomF: ".$fournisseur->getnomF()."<br>";
 		echo "adresseF: ".$fournisseur->getadresseF()."<br>";
 		echo "telF: ".$fournisseur->gettelF()."<br>";
+		echo "idC: ".$fournisseur->getidC()."<br>";
 		
 	}
 	
 	function ajouterfournisseur($fournisseur){
-		$sql = "insert INTO `fournisseur` (nomF,adresseF,telF) VALUES (:nomF,:adresseF,:telF)";
+		$sql = "insert INTO `fournisseur` (nomF,adresseF,telF,idC) VALUES (:nomF,:adresseF,:telF,:idC)";
 		$db = config::getConnexion();
 		$req = $db->prepare($sql);
 		$req->bindValue(':nomF',$fournisseur->getnomF());
 		$req->bindValue(':adresseF',$fournisseur->getadresseF());
 		$req->bindValue(':telF',$fournisseur->gettelF());
+		$req->bindValue(':idC',$fournisseur->getidC());
 		try{
 		$req->execute();
 		}
@@ -51,7 +53,7 @@ function afficherfournisseur ($fournisseur){
         }
 	}
 	function modifierfournisseur($fournisseur,$idF){
-		$sql="UPDATE fournisseur SET idF=:idFn, adresseF=:adresseF,nomF=:nomF,telF=:telF WHERE idF=:idF";
+		$sql="UPDATE fournisseur SET idF=:idFn, adresseF=:adresseF,nomF=:nomF,telF=:telF, idC=:idC WHERE idF=:idF";
 		
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -62,14 +64,15 @@ try{
         $adresseF=$fournisseur->getadresseF();
         $nomF=$fournisseur->getnomF();
         $telF=$fournisseur->gettelF();
-		$datas = array(':idFn'=>$idFn, ':idF'=>$idF,':adresseF'=>$adresseF, ':nomF'=>$nomF,':telF'=>$telF);
+        $idC=$fournisseur->getidC();
+		$datas = array(':idFn'=>$idFn, ':idF'=>$idF,':adresseF'=>$adresseF, ':nomF'=>$nomF,':telF'=>$telF, ':idC'=>$idC);
 
 		$req->bindValue(':idFn',$idFn);
 		$req->bindValue(':idF',$idF);
 		$req->bindValue(':adresseF',$adresseF);
 		$req->bindValue(':nomF',$nomF);
 		$req->bindValue(':telF',$telF);
-		
+		$req->bindValue(':idC',$idC);
 		
 		
             $s=$req->execute();

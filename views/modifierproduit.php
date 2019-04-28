@@ -1,8 +1,7 @@
-<!doctype html>
-<html class="no-js" lang="en">
 <?php
 include "../config.php";
 $db=config::getConnexion();
+$result1=$db->query('select * from categorie ');
 $idP = $_GET['edit'];
 $emps=$db->query("SELECT * FROM  produit WHERE idP=$idP");
            while ($row = $emps->fetch()) {
@@ -12,16 +11,19 @@ $emps=$db->query("SELECT * FROM  produit WHERE idP=$idP");
             $descP = $row['descP'];
             $qteP = $row['qteP'];
             $prixP = $row['prixP'];
-            $categorieP = $row['categorieP'];
+            $idC = $row['idC'];
 
         }
 ?>
+
+<!doctype html>
+<html class="no-js" lang="en">
 
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>ID bureau</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -43,7 +45,7 @@ $emps=$db->query("SELECT * FROM  produit WHERE idP=$idP");
 </head>
 <body>
 
-        <aside id="left-panel" class="left-panel">
+     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
 
             <div class="navbar-header">
@@ -57,7 +59,7 @@ $emps=$db->query("SELECT * FROM  produit WHERE idP=$idP");
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     
@@ -69,23 +71,54 @@ $emps=$db->query("SELECT * FROM  produit WHERE idP=$idP");
                             <li><i class="fa fa-table"></i><a href="ajout-client.html">Ajouter un client</a></li>
                             
                         </ul>
-                    </li>
+                 
                      <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des produits </a>
                         <ul class="sub-menu children dropdown-menu">
                             
                             <li><i class="fa fa-table"></i><a href="tables-produits.php">Liste des produits</a></li>
-                            <li><i class="fa fa-table"></i><a href="ajout-produit.html">Ajouter un produit</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-produit.php">Ajouter un produit</a></li>
+                            
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des Gategories </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            
+                            <li><i class="fa fa-table"></i><a href="tables-categorie.php">Liste des Categorie</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-categorie.html">Ajouter une Categorie</a></li>
+                            
+                        </ul>
+                    </li>
+
+  <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des fournisseurs </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            
+                            <li><i class="fa fa-table"></i><a href="tables-fournisseurs.php">Liste des fournisseurs</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-fournisseur.php">Ajouter un fournisseur</a></li>
+                            
+                        </ul>
+                    </li>
+                     <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des livraisons </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            
+                            <li><i class="fa fa-table"></i><a href="tablelivraison.php">Liste des livraisons</a></li>
+                            <li><i class="fa fa-table"></i><a href="example_attachments.php">Mail</a></li>
+                            <li><i class="fa fa-table"></i><a href="test.php">PDF</a></li>
+                            <li><i class="fa fa-table"></i><a href="statistique.php">Statistique</a></li>
                             
                         </ul>
                     </li>
 
                      <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des livraisons </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des Livreurs </a>
                         <ul class="sub-menu children dropdown-menu">
                             
-                            <li><i class="fa fa-table"></i><a href="tabes-promotions.html">Liste des livraisons</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">Ajouter une livraison</a></li>
+                            <li><i class="fa fa-table"></i><a href="tablelivreur.php">Liste des livreur </a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-livreur.html">Ajouter un livreur </a></li>
                             
                         </ul>
                     </li>
@@ -292,15 +325,16 @@ $emps=$db->query("SELECT * FROM  produit WHERE idP=$idP");
                             </div>
                             
 
-                               <select  class="standardSelect" tabindex="10"  name="categorieP" value="<?php echo $prixP;?>" id="categorieP">
-                                    <option value="">Séléctionner une catégorie</option>
-                                    <option value="SchoolSupplies">School supplies</option>
-                                    <option value="bagkit">School bag & kit</option>
-                                    <option value="OfficeSupply">Office Supply</option>
-                                    <option value="hightech">High-tech</option>
-                                    <option value="ink">ink kardige</option>
-                                   
+                                <select  class="standardSelect" tabindex="10"  name="idC" id="idC">
+                                               <?php
+                                foreach ($result1 as $key) {
+                                    # code...
+                                ?>         
                                     
+                                    <option value="<?php echo $key['idC'];?>"><?php echo $key['nomC'];?></option>
+
+                                   
+                                        <?php } ?>
                                 </select>
 
                             <input type="hidden" name="idPe"  value="<?php echo $idP;?>" >
@@ -318,6 +352,22 @@ $emps=$db->query("SELECT * FROM  produit WHERE idP=$idP");
                                                              
                                                         </form>
                                                     </div>
-                                                   
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+
+    <script src="vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="vendors/datatables.net-buttons-bs4/js/buttons.bootstrap4.min.js"></script>
+    <script src="vendors/jszip/dist/jszip.min.js"></script>
+    <script src="vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="vendors/pdfmake/build/vfs_fonts.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="vendors/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="assets/js/init-scripts/data-table/datatables-init.js"></script>  
 </body>
 </html>

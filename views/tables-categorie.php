@@ -23,7 +23,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sufee Admin - HTML5 Admin Template</title>
+    <title>ID bureau</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -59,7 +59,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     
@@ -81,12 +81,23 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
                             
                         </ul>
                     </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des Gategories </a>
+                        <ul class="sub-menu children dropdown-menu">
+                            
+                            <li><i class="fa fa-table"></i><a href="tables-categorie.php">Liste des Categorie</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-categorie.html">Ajouter une Categorie</a></li>
+                            
+                        </ul>
+                    </li>
+
   <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des fournisseurs </a>
                         <ul class="sub-menu children dropdown-menu">
                             
                             <li><i class="fa fa-table"></i><a href="tables-fournisseurs.php">Liste des fournisseurs</a></li>
-                            <li><i class="fa fa-table"></i><a href="ajout-fournisseur.html">Ajouter un fournisseur</a></li>
+                            <li><i class="fa fa-table"></i><a href="ajout-fournisseur.php">Ajouter un fournisseur</a></li>
                             
                         </ul>
                     </li>
@@ -332,7 +343,6 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
                                         <tr>
                                             <th> Nom </th>
                                             <th> Identifiant </th>
-                                            <th> Lien </th>
                                             <th> Action </th>
 
                                         </tr>
@@ -344,7 +354,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 
                                             <td> <?php echo $row['nomC']; ?></td>
                                             <td> <?php echo $row['idC']; ?></td>
-                                            <td> <?php echo $row['lienC']; ?></td>
+                                            
                                             <td>  
                 <a href="modifiercategorie.php?edit=<?php echo $row['idC']; ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                 

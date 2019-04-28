@@ -4,16 +4,15 @@ class categorieC {
 function affichercategorie ($categorie){
 		
 		echo "nomC: ".$categorie->getnomC()."<br>";
-		echo "lienC: ".$categorie->getlienC()."<br>";
+		
 		
 	}
 	
 	function ajoutercategorie($categorie){
-		$sql = "insert INTO `categorie` (nomC,lienC) VALUES (:nomC,:lienC)";
+		$sql = "insert INTO `categorie` (nomC) VALUES (:nomC)";
 		$db = config::getConnexion();
 		$req = $db->prepare($sql);
 		$req->bindValue(':nomC',$categorie->getnomC());
-		$req->bindValue(':lienC',$categorie->getlienC());
 		try{
 		$req->execute();
 		}
@@ -49,7 +48,7 @@ function affichercategorie ($categorie){
         }
 	}
 	function modifiercategorie($categorie,$idC){
-		$sql="UPDATE categorie SET idC=:idCn nomC=:nomC lienC=:lienC WHERE idC=:idC";
+		$sql="UPDATE categorie SET idC=:idCn nomC=:nomC WHERE idC=:idC";
 		
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -59,19 +58,14 @@ try{
         $idCn=$categorie->getidC();
        
         $nomC=$categorie->getnomC();
-        $lienC=$categorie->getlienC();
 
-		$datas = array(':idCn'=>$idCn, ':idC'=>$idC, ':nomC'=>$nomC, ':lienC'=>$lienC);
+		$datas = array(':idCn'=>$idCn, ':idC'=>$idC, ':nomC'=>$nomC);
 
 		$req->bindValue(':idCn',$idCn);
 		$req->bindValue(':idC',$idC);
 
 		$req->bindValue(':nomC',$nomC);
-		$req->bindValue(':lienC',$lienC);
 	
-		
-		
-		
             $s=$req->execute();
 			
            // header('Location: index.php');

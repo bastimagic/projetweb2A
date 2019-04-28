@@ -7,12 +7,12 @@ function afficherproduit ($produit){
 		echo "descP: ".$produit->getdescP()."<br>";
 		echo "qteP: ".$produit->getqteP()."<br>";
 		echo "prixP: ".$produit->getprixP()."<br>";
-		echo "categorieP: ".$produit->getcategorieP()."<br>";
+		echo "idC: ".$produit->getidC()."<br>";
 		
 	}
-	
-	function ajouterproduit($produit){
-		$sql = "insert INTO `produit` (imageP,nomP,descP,qteP,prixP,categorieP) VALUES (:imageP,:nomP,:descP,:qteP,:prixP,:categorieP)";
+
+function ajouterproduit($produit){
+		$sql = "insert INTO `produit` (imageP,nomP,descP,qteP,prixP,idC) VALUES (:imageP,:nomP,:descP,:qteP,:prixP,:idC)";
 		$db = config::getConnexion();
 		$req = $db->prepare($sql);
 		$req->bindValue(':imageP',$produit->getimageP());
@@ -20,7 +20,7 @@ function afficherproduit ($produit){
 		$req->bindValue(':descP',$produit->getdescP());
 		$req->bindValue(':qteP',$produit->getqteP());
 		$req->bindValue(':prixP',$produit->getprixP());
-		$req->bindValue(':categorieP',$produit->getcategorieP());
+		$req->bindValue(':idC',$produit->getidC());
 		try{
 		$req->execute();
 		}
@@ -31,7 +31,6 @@ function afficherproduit ($produit){
 	}
 	
 	function afficherproduits(){
-		//$sql="SElECT * From employe e inner join formationphp.employe a on e.= a.imageP";
 		$sql="SElECT * From produit";
 		$db = config::getConnexion();
 		try{
@@ -56,7 +55,7 @@ function afficherproduit ($produit){
         }
 	}
 	function modifierproduit($produit,$idP){
-		$sql="UPDATE produit SET idP=:idPn, imageP=:imageP,nomP=:nomP,descP=:descP, qteP=:qteP,prixP=:prixP,categorieP=:categorieP WHERE idP=:idP";
+		$sql="UPDATE produit SET idP=:idPn, imageP=:imageP,nomP=:nomP,descP=:descP, qteP=:qteP,prixP=:prixP,idC=:idC WHERE idP=:idP";
 		
 		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
@@ -69,8 +68,8 @@ try{
         $descP=$produit->getdescP();
         $qteP=$produit->getqteP();
         $prixP=$produit->getprixP();
-        $categorieP=$produit->getcategorieP();
-		$datas = array(':idPn'=>$idPn, ':idP'=>$idP,':imageP'=>$imageP, ':nomP'=>$nomP,':descP'=>$descP, ':qteP'=>$qteP, ':prixP'=>$prixP,':categorieP'=>$categorieP);
+        $idC=$produit->getidC();
+		$datas = array(':idPn'=>$idPn, ':idP'=>$idP,':imageP'=>$imageP, ':nomP'=>$nomP,':descP'=>$descP, ':qteP'=>$qteP, ':prixP'=>$prixP,':idC'=>$idC);
 		$req->bindValue(':idPn',$idPn);
 		$req->bindValue(':idP',$idP);
 		$req->bindValue(':imageP',$imageP);
@@ -78,7 +77,7 @@ try{
 		$req->bindValue(':descP',$descP);
 		$req->bindValue(':qteP',$qteP);
 		$req->bindValue(':prixP',$prixP);
-		$req->bindValue(':categorieP',$categorieP);
+		$req->bindValue(':idC',$idC);
 		
 		
             $s=$req->execute();
@@ -116,5 +115,3 @@ try{
         }
 	}
 }
-
-?>

@@ -6,16 +6,16 @@ class produit{
 	private $descP;
 	private $qteP;
 	private $prixP;
-	private $categorieP;
+	private $idC;
 
-	function __construct($imageP,$idP,$nomP,$descP,$qteP,$prixP,$categorieP){
+	function __construct($imageP,$idP,$nomP,$descP,$qteP,$prixP,$idC){
 		$this->imageP=$imageP;
 		$this->idP=$idP;
 		$this->nomP=$nomP;
 		$this->descP=$descP;
 		$this->qteP=$qteP;
 		$this->prixP=$prixP;
-		$this->categorieP=$categorieP;
+		$this->idC=$idC;
 	}
 	
 	function getimageP(){
@@ -36,8 +36,8 @@ class produit{
 	function getprixP(){
 		return $this->prixP;
 	}
-	function getcategorieP(){
-		return $this->categorieP;
+	function getidC(){
+		return $this->idC;
 	}
 	
     function setimageP($imageP){
@@ -58,8 +58,8 @@ class produit{
 	function setprixP($prixP){
 		$this->prixP=$prixP;
 	}
-	function setcategorieP($categorieP){
-		$this->categorieP=$categorieP;
+	function setidC($idC){
+		$this->idC=$idC;
 	}
 	
 	

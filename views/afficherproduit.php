@@ -13,7 +13,7 @@ $listeproduit=$produit1C->afficherproduits();
 <td>descP</td>
 <td>qteP</td>
 <td>prixP</td>
-<td>categorieP</td>
+<td>idC</td>
 <td>supprimer</td>
 <td>modifier</td>
 </tr>
@@ -28,7 +28,7 @@ foreach($listeproduit as $row){
   <td><?PHP echo $row['descP']; ?></td>
   <td><?PHP echo $row['qteP']; ?></td>
   <td><?PHP echo $row['prixP']; ?></td>
-  <td><?PHP echo $row['categorieP']; ?></td>
+  <td><?PHP echo $row['idC']; ?></td>
 
 
   <td>

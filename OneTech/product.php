@@ -1,7 +1,9 @@
 <?php
 include "../config.php";
+include "../entities/produit.php";
 $db=config::getConnexion();
 $cat= $_GET['cat'];
+
 $result2=$db->query('select * from categorie');
 $result1=$db->query('select * from categorie');
 $result4=$db->query('select * from categorie');
@@ -9,6 +11,15 @@ $query=$db->prepare('SELECT * from produit p inner join categorie c where p.idC=
 $query->bindValue(':cat',$cat);
 $query->execute();
 $result=$query->fetch();
+?>
+<?php
+$idP= $_GET['cat'];
+$emps=$db->query("SELECT * FROM  produit WHERE idP=$idP ");
+           while ($row = $emps->fetch()) 
+        {
+            $idP= $row['idP'];
+            $note = $row['note'];
+        }
 ?>
 
 
@@ -27,6 +38,80 @@ $result=$query->fetch();
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 <link rel="stylesheet" type="text/css" href="styles/product_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/product_responsive.css">
+<link rel="shortcut icon" href="LogoID.ico">
+<style>
+	form .stars {
+  background: url("stars.png") repeat-x 0 0;
+  width: 150px;
+  margin: 0 auto;
+}
+
+form .stars input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+form .stars input[type="radio"].star-5:checked ~ span {
+  width: 100%;
+}
+form .stars input[type="radio"].star-4:checked ~ span {
+  width: 80%;
+}
+form .stars input[type="radio"].star-3:checked ~ span {
+  width: 60%;
+}
+form .stars input[type="radio"].star-2:checked ~ span {
+  width: 40%;
+}
+form .stars input[type="radio"].star-1:checked ~ span {
+  width: 20%;
+}
+form .stars label {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 0!important;
+  padding: 0!important;
+  text-indent: -999em;
+  float: left;
+  position: relative;
+  z-index: 10;
+  background: transparent!important;
+  cursor: pointer;
+}
+form .stars label:hover ~ span {
+  background-position: 0 -30px;
+}
+form .stars label.star-5:hover ~ span {
+  width: 100% !important;
+}
+form .stars label.star-4:hover ~ span {
+  width: 80% !important;
+}
+form .stars label.star-3:hover ~ span {
+  width: 60% !important;
+}
+form .stars label.star-2:hover ~ span {
+  width: 40% !important;
+}
+form .stars label.star-1:hover ~ span {
+  width: 20% !important;
+}
+form .stars span {
+  display: block;
+  width: 0;
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 30px;
+  background: url("stars.png") repeat-x 0 -60px;
+  -webkit-transition: -webkit-width 0.5s;
+  -moz-transition: -moz-width 0.5s;
+  -ms-transition: -ms-width 0.5s;
+  -o-transition: -o-width 0.5s;
+  transition: width 0.5s;
+}
+</style>
 
 </head>
 
@@ -90,23 +175,14 @@ $result=$query->fetch();
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+									<form action="resultat.php" class="header_search_form clearfix" method="GET">
+										<input type="search" required="required" name="terme" class="header_search_input" placeholder="Search for products...">
 										<div class="custom_dropdown">
-											<div class="custom_dropdown_list">
+											
 												<span class="custom_dropdown_placeholder clc">All Categories</span>
-												<i class="fas fa-chevron-down"></i>
-												<ul class="custom_list clc">
-													<?php
-								foreach ($result2 as $key) {
-									# code...
-								?>
-													<li><a class="clc" href="shop.php?cat=<?php echo $key['idC'];?>"><?php echo $key['nomC'];?></a></li>
-													<?php } ?>
-												</ul>
-											</div>
+											
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="images/search.png" alt=""></button>
+										<button type="submit" name="s" class="header_search_button trans_300" value="Rechercher"><img src="images/search.png" alt=""></button>
 									</form>
 								</div>
 							</div>
@@ -349,7 +425,6 @@ $result=$query->fetch();
 					<div class="product_description">
 						<div class="product_category"><?php echo $result['nomC'];?></div>
 						<div class="product_name"><?php echo $result['nomP'];?></div>
-						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
 						<div class="product_text"><p><?php echo $result['descP'];?>.</p></div>
 						<div class="order_info d-flex flex-row">
 							<form action="#">
@@ -375,8 +450,28 @@ $result=$query->fetch();
 									<button type="button" class="button cart_button">Add to Cart</button>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
 								</div>
+								<br>
+								<br>
+								<form action="noterProduit.php" method="POST">
+								<div class="stars" style="margin-left: -2px;">
+		<input type="radio" name="note" class="star-1" value="1" id="star-1" />
+		<label class="star-1" for="star-1">1</label>
+		<input type="radio" name="note" class="star-2" value="2" id="star-2" />
+		<label class="star-2" for="star-2">2</label>
+		<input type="radio" name="note" class="star-3" value="3" id="star-3" />
+		<label class="star-3" for="star-3">3</label>
+		<input type="radio" name="note" class="star-4" value="4" id="star-4" />
+		<label class="star-4" for="star-4">4</label>
+		<input type="radio" name="note" class="star-5" value="5" id="star-5" />
+		<label class="star-5" for="star-5">5</label>
+		<span></span>
+		
+							</div>
 								
-							</form>
+		<input type="hidden" name="refe" value="<?php echo $idP;?>">
+		
+			<button type="submit" class="button cart_button"><span class=" "></span> NOTER</button></a>
+		    </form>
 						</div>
 					</div>
 				</div>
