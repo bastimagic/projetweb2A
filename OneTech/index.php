@@ -1,5 +1,6 @@
 <?php
-include "../config.php";
+require_once "C:/wamp64/www/integration/integration/OneTech/core/client.php";
+//include "../config.php";
 $db=config::getConnexion();
 $result=$db->query('select * from categorie');
 $result1=$db->query('select * from categorie');
@@ -36,9 +37,9 @@ $result4=$db->query('select * from categorie');
 <body>
 
 <div class="super_container">
-	
+
 	<!-- Header -->
-	
+
 	<header class="header">
 
 		<!-- Top Bar -->
@@ -62,20 +63,38 @@ $result4=$db->query('select * from categorie');
 										<a href="#">DT TUNIS<i class="fas fa-chevron-down"></i></a>
 									</li>
 									<!-- chatbot-->
-									
-			
+
+
 								</div>
 								</ul>
 							</div>
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								<div><a href="#">Register</a></div>
-								<div><a href="#">Sign in</a></div>
+								<div><a href="register.html">Register</a></div>
+								<div><a href="signin.html">Sign in</a></div>
+								<?php
+								//require_once "../../config.php";
+
+								$tt=0;
+
+								if(isset($_SESSION['nomclient']))
+								{
+									?><a href="profilclient.php"><?php echo $_SESSION['nomclient'];?></a>
+									<?
+								}
+								else
+								{
+								echo "Non connecter";
+								$tt++;
+								}
+								if($tt==0)
+									{?>
+								<form action="sedeconnecter.php"><a href="sedeconnecter.php">Se deconnecter </a></form><?php }?>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>
 		</div>
 
 		<!-- Header Main -->
@@ -99,12 +118,12 @@ $result4=$db->query('select * from categorie');
 									<form action="resultat.php" class="header_search_form clearfix" method="GET">
 										<input type="search" required="required" name="terme" class="header_search_input" placeholder="Search for products...">
 										<div class="custom_dropdown">
-											
+
 												<span class="custom_dropdown_placeholder clc">All Categories</span>
 												<ul class="custom_list clc">
-													
+
 												</ul>
-											
+
 										</div>
 										<button type="submit" name="s" class="header_search_button trans_300" value="Rechercher"><img src="images/search.png" alt=""></button>
 									</form>
@@ -139,7 +158,7 @@ $result4=$db->query('select * from categorie');
 							</div>
 							<div class="cart">
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									
+
 									<div class="cart_content">
 										<div class="cart_text"><a href="ajouterlivraison.html">livraison</a></div>
 									</div>
@@ -153,14 +172,14 @@ $result4=$db->query('select * from categorie');
 				</div>
 			</div>
 		</div>
-		
+
 		<!-- Main Navigation -->
 
 		<nav class="main_nav">
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						
+
 						<div class="main_nav_content d-flex flex-row">
 
 							<!-- Categories Menu -->
@@ -253,17 +272,17 @@ $result4=$db->query('select * from categorie');
 				</div>
 			</div>
 		</nav>
-		
-		
+
+
 		<!-- Menu -->
 
 		<div class="page_menu">
 			<div class="container">
 				<div class="row">
 					<div class="col">
-						
+
 						<div class="page_menu_content">
-							
+
 							<div class="page_menu_search">
 								<form action="#">
 									<input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
@@ -325,7 +344,7 @@ $result4=$db->query('select * from categorie');
 								<li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
 								<li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
 							</ul>
-							
+
 							<div class="menu_contact">
 								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/phone_white.png" alt=""></div>+216 71 24 07</div>
 								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="images/mail_white.png" alt=""></div><a href="mailto:id.bureau@orange.tn">id.bureau@orange.tn</a></div>
@@ -337,7 +356,7 @@ $result4=$db->query('select * from categorie');
 		</div>
 
 	</header>
-	
+
 	<!-- Banner -->
 
 	<div class="banner">
@@ -359,23 +378,23 @@ $result4=$db->query('select * from categorie');
 
 	<!-- Characteristics -->
 
-	
+
 	<!-- Deals of the week -->
 
 	<div class="deals_featured">
 		<div class="container">
 			<div class="row">
 				<div class="col d-flex flex-lg-row flex-column align-items-center justify-content-start">
-					
+
 					<!-- Deals -->
 
 					<div class="deals">
 						<div class="deals_title">Deals of the Week</div>
 						<div class="deals_slider_container">
-							
+
 							<!-- Deals Slider -->
 							<div class="owl-carousel owl-theme deals_slider">
-								
+
 								<!-- Deals Item -->
 								<div class="owl-item deals_item">
 									<div class="deals_image"><img src="images/deals.png" alt=""></div>
@@ -517,7 +536,7 @@ $result4=$db->query('select * from categorie');
 							<div class="deals_slider_next deals_slider_nav"><i class="fas fa-chevron-right ml-auto"></i></div>
 						</div>
 					</div>
-					
+
 					<!-- Featured -->
 					<div class="featured">
 						<div class="tabbed_container">
@@ -1779,7 +1798,7 @@ $result4=$db->query('select * from categorie');
 						<div class="popular_categories_link"><a href="#">full catalog</a></div>
 					</div>
 				</div>
-				
+
 				<!-- Popular Categories Slider -->
 
 				<div class="col-lg-9">
@@ -1856,7 +1875,7 @@ $result4=$db->query('select * from categorie');
 										<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
 										<div class="button banner_2_button"><a href="#">Explore</a></div>
 									</div>
-									
+
 								</div>
 								<div class="col-lg-8 col-md-6 fill_height">
 									<div class="banner_2_image_container">
@@ -1864,7 +1883,7 @@ $result4=$db->query('select * from categorie');
 									</div>
 								</div>
 							</div>
-						</div>			
+						</div>
 					</div>
 				</div>
 
@@ -1881,7 +1900,7 @@ $result4=$db->query('select * from categorie');
 										<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
 										<div class="button banner_2_button"><a href="#">Explore</a></div>
 									</div>
-									
+
 								</div>
 								<div class="col-lg-8 col-md-6 fill_height">
 									<div class="banner_2_image_container">
@@ -1889,7 +1908,7 @@ $result4=$db->query('select * from categorie');
 									</div>
 								</div>
 							</div>
-						</div>			
+						</div>
 					</div>
 				</div>
 
@@ -1906,7 +1925,7 @@ $result4=$db->query('select * from categorie');
 										<div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
 										<div class="button banner_2_button"><a href="#">Explore</a></div>
 									</div>
-									
+
 								</div>
 								<div class="col-lg-8 col-md-6 fill_height">
 									<div class="banner_2_image_container">
@@ -1914,7 +1933,7 @@ $result4=$db->query('select * from categorie');
 									</div>
 								</div>
 							</div>
-						</div>			
+						</div>
 					</div>
 				</div>
 
@@ -1929,7 +1948,7 @@ $result4=$db->query('select * from categorie');
 
 	<!-- Reviews -->
 
-	
+
 
 	<!-- Brands -->
 
@@ -1971,7 +1990,7 @@ $result4=$db->query('select * from categorie');
 						<div class="logo_container">
 							<div class="logo"><IMG src="LogoID.png"></div>
 						</div>
-						
+
 						<div class="footer_title">Got Question? Call Us 24/7</div>
 						<div class="footer_phone">+216 71 24 07 22</div>
 						<div class="footer_contact_text">
@@ -1988,7 +2007,7 @@ $result4=$db->query('select * from categorie');
 						</div>
 					</div>
 				</div>
-	
+
 				<div class="col-lg-2 offset-lg-2">
 					<div class="footer_column">
 						<div class="footer_title">Find it Fast</div>
@@ -2000,7 +2019,7 @@ $result4=$db->query('select * from categorie');
 													<li><a href="shop.php?cat=<?php echo $key['idC'];?>"><?php echo $key['nomC'];?></a></li>
 													<?php } ?>
 						</ul>
-						
+
 					</div>
 				</div>
 
@@ -2029,7 +2048,7 @@ $result4=$db->query('select * from categorie');
   box-sizing: border-box;" placeholder=" say anything..." autocomplete="off"/></li>
 							<li><a style="font-weight: 400;">User: <span id="user"></span></a></li>
 							<li><a style="font-weight: 400;">Chatbot: <span id="chatbot"></span></a></li>
-						</ul>	
+						</ul>
 					</div>
 				</div>
 

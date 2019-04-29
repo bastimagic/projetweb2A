@@ -7,7 +7,7 @@ testConnexion();
 $db=config::getConnexion();
 $result=$db->query("SELECT * FROM produit");
 $result1=$db->query("SELECT * FROM produit WHERE prixP  between '0' and '100'");
-$result2=$db->query("SELECT * FROM produit WHERE prixP  between '100' and '200'"); 
+$result2=$db->query("SELECT * FROM produit WHERE prixP  between '100' and '200'");
 $result3=$db->query("SELECT * FROM produit WHERE prixP between '200' and '300'");
 $result4=$db->query("SELECT * FROM produit WHERE prixP between '300' and '6000'");
 $produittotal=0;
@@ -15,23 +15,23 @@ $nombre1=0;
 $nombre2=0;
 $nombre3=0;
 $nombre4=0;
-while ($row = $result->fetch()) 
+while ($row = $result->fetch())
  {
  $produittotal++;
  }
- while ($row = $result1->fetch()) 
+ while ($row = $result1->fetch())
  {
  $nombre1++;
  }
-  while ($row = $result2->fetch()) 
+  while ($row = $result2->fetch())
  {
  $nombre2++;
  }
-  while ($row = $result3->fetch()) 
+  while ($row = $result3->fetch())
  {
  $nombre3++;
  }
-  while ($row = $result4->fetch()) 
+  while ($row = $result4->fetch())
  {
  $nombre4++;
  }
@@ -47,7 +47,7 @@ while ($row = $result->fetch())
   $pourcentage4=($nombre4*100)/$produittotal;
   $var4=100-$pourcentage4;
 
-  
+
 
   ?>
 
@@ -123,87 +123,87 @@ while ($row = $result->fetch())
                         <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
-                    
+
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des clients </a>
                         <ul class="sub-menu children dropdown-menu">
                             <!-- clients commandes produits publicités promotions -->
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Liste des clients</a></li>
-                            <li><i class="fa fa-table"></i><a href="ajout-client.html">Ajouter un client</a></li>
-                            
+                            <li><i class="fa fa-table"></i><a href="ajoutclient.php">Gestion des clients</a></li>
+
                         </ul>
-                 
+
                      <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des produits </a>
                         <ul class="sub-menu children dropdown-menu">
-                            
+
                             <li><i class="fa fa-table"></i><a href="tables-produits.php">Liste des produits</a></li>
                             <li><i class="fa fa-table"></i><a href="ajout-produit.php">Ajouter un produit</a></li>
-                            
+
                         </ul>
                     </li>
 
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des Gategories </a>
                         <ul class="sub-menu children dropdown-menu">
-                            
+
                             <li><i class="fa fa-table"></i><a href="tables-categorie.php">Liste des Categorie</a></li>
                             <li><i class="fa fa-table"></i><a href="ajout-categorie.html">Ajouter une Categorie</a></li>
-                            
+
                         </ul>
                     </li>
 
   <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des fournisseurs </a>
                         <ul class="sub-menu children dropdown-menu">
-                            
+
                             <li><i class="fa fa-table"></i><a href="tables-fournisseurs.php">Liste des fournisseurs</a></li>
                             <li><i class="fa fa-table"></i><a href="ajout-fournisseur.php">Ajouter un fournisseur</a></li>
-                            
+
                         </ul>
                     </li>
                      <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des livraisons </a>
                         <ul class="sub-menu children dropdown-menu">
-                            
+
                             <li><i class="fa fa-table"></i><a href="tablelivraison.php">Liste des livraisons</a></li>
                             <li><i class="fa fa-table"></i><a href="example_attachments.php">Mail</a></li>
                             <li><i class="fa fa-table"></i><a href="test.php">PDF</a></li>
                             <li><i class="fa fa-table"></i><a href="statistique.php">Statistique</a></li>
-                            
+
                         </ul>
                     </li>
 
                      <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des Livreurs </a>
                         <ul class="sub-menu children dropdown-menu">
-                            
+
                             <li><i class="fa fa-table"></i><a href="tablelivreur.php">Liste des livreur </a></li>
                             <li><i class="fa fa-table"></i><a href="ajout-livreur.html">Ajouter un livreur </a></li>
-                            
+
                         </ul>
                     </li>
 
                         <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des commandes </a>
                         <ul class="sub-menu children dropdown-menu">
-                            
+
                             <li><i class="fa fa-table"></i><a href="tables-commande.html">Liste des commandes </a></li>
                             <li><i class="fa fa-table"></i><a href="ajout-commande.html">Ajouter une commande </a></li>
-                            
+
                         </ul>
                     </li>
 
                         <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Gestion des publicités </a>
                         <ul class="sub-menu children dropdown-menu">
-                            
+
                             <li><i class="fa fa-table"></i><a href="tables-publicite.html">Liste des publicités </a></li>
                             <li><i class="fa fa-table"></i><a href="tables-data.html">Ajouter une publicité </a></li>
-                            
+
                         </ul>
                     </li>
-                    
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -223,7 +223,7 @@ while ($row = $result->fetch())
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
-                        
+
 
                         <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -300,14 +300,14 @@ while ($row = $result->fetch())
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                             <a class="nav-link" <?php if (isset($_SESSION['Email'])) echo  'href="deconnexion.php"';else echo 'href="session.php"';?> > 
-                            <?php if (isset($_SESSION['Email'])) 
+                             <a class="nav-link" <?php if (isset($_SESSION['Email'])) echo  'href="deconnexion.php"';else echo 'href="session.php"';?> >
+                            <?php if (isset($_SESSION['Email']))
                                                 {
                                                 echo "Déconnexion";
                                                 }
                                                 else
                                                 {
-                                                echo "Connexion ";  
+                                                echo "Connexion ";
                                                 }
 
                                                 ?>
@@ -362,7 +362,7 @@ while ($row = $result->fetch())
 
         <div class="content mt-3">
 
- 
+
 
             <div class="col-lg-3 col-md-6">
                 <div class="social-box facebook">
@@ -420,14 +420,14 @@ while ($row = $result->fetch())
             </div>
 
             <div class="col-xl-6">
-                
+
                     <div class="card-body" >
                          <div id="piechart" style="width:740px;  height: 500px; border-style: 30px;"></div>
                     </div>
 
-            
+
             </div>
-          
+
 
             <!--<div class="col-xl-3 col-lg-6">
                 <section class="card">
@@ -501,7 +501,7 @@ while ($row = $result->fetch())
                         <div id="vmap" class="vmap" style="height: 265px;"></div>
                     </div>
                 </div>
-              
+
             </div> -->
 
 
