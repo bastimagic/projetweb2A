@@ -5,7 +5,12 @@ include "../entities/panier.php";
 include "../core/panierc.php";
 include "../entities/panier_produit.php";
 include "../core/panier_produitc.php";
-
+session_start();
+if (empty($_SESSION['Email']))
+{
+ 
+    header('Location: session.php');
+}
 
 $panC=new panierc();
 $list_pan=$panC->afficherpanier();
@@ -13,6 +18,10 @@ $list_pan=$panC->afficherpanier();
 
 $comm=new commandec();
 $list_cmd=$comm->affichercommande();
+$var = $comm->stat1();
+$var2 = $comm->stat2();
+$var3 = $comm->stat3();
+$var4 = $comm->stat4();
 ?>
 
 
@@ -42,10 +51,14 @@ $list_cmd=$comm->affichercommande();
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css">
-
+            <link rel="stylesheet" href="assets/css/chart.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 </head>
 
 <body>
@@ -437,6 +450,29 @@ $list_cmd=$comm->affichercommande();
                      ?>
 
                 </div>
+
+                 <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title"> Statistique Commande </strong>
+                            </div>
+                            <div class="card-body">
+                                    <canvas id="myChart1"></canvas>
+                            </div>
+                            </div>
+                            </div>
+                            
+                              <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title"> Statistique Profit </strong>
+                            </div>
+                            <div class="card-body">
+                                    <canvas id="myChart2"></canvas>
+                            </div>
+                            </div>
+                            </div>
+
             </div><!-- .animated -->
         </div><!-- .content -->
 
@@ -475,7 +511,7 @@ $list_cmd=$comm->affichercommande();
 
 
 function validateForm() {
-  var x =  document.getElementById("myAnchor").focus();
+  var x =  document.getElementById("commnt").focus();
   if (x.length < 5) {
     alert("Min 5 Char !!");
     return false;
@@ -488,6 +524,151 @@ function validateForm() {
 
 
 
+    </script>
+        <script>
+    var ctx = document.getElementById('myChart1').getContext("2d");
+
+var barStroke = ctx.createLinearGradient(700, 0, 120, 0);
+barStroke.addColorStop(0, 'rgba(0, 255, 188, 0.6)');
+barStroke.addColorStop(1, 'rgba(0, 205, 194, 0.6)');
+
+var barFill = ctx.createLinearGradient(700, 0, 120, 0);
+barFill.addColorStop(0, "rgba(0, 255, 188, 0.6)");
+barFill.addColorStop(1, "rgba(0, 205, 194, 0.6)");
+
+var barFillHover = ctx.createLinearGradient(700, 0, 120, 0);
+barFillHover.addColorStop(0, "rgba(0, 255, 188, 0.8)");
+barFillHover.addColorStop(1, "rgba(0, 205, 194, 0.6)");
+
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ["Total Commande", "Commande jour"],
+        datasets: [{
+            label: "Data",
+            borderColor: barStroke,
+            borderWidth: 1,
+            fill: true,
+            backgroundColor: barFill,
+            hoverBackgroundColor: barFillHover,
+            data: [<?php echo $var; ?>, <?php echo $var2; ?>]
+        }]
+    },
+    options: {
+        animation: {
+            easing: "easeOutQuart"
+        },
+        legend: {
+            position: "bottom",
+            display: false
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontColor: "#000",
+                    fontStyle: "bold",
+                    beginAtZero: true,
+                    padding: 15,
+                    //display: false - remove this and commenting to display: false
+                },
+                gridLines: {
+                    drawTicks: false,
+                    display: false,
+                    color: "transparent",
+                    zeroLineColor: "transparent"
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display: false,
+                    color: "transparent",
+                    zeroLineColor: "transparent"
+                },
+                ticks: {
+                    padding: 15,
+                    beginAtZero: true,
+                    fontColor: "#000",
+                    fontStyle: "bold",
+                    maxTicksLimit: 20,
+                    //display: false - remove this and commenting to display: false
+                }
+            }]
+        }
+    }
+});
+    </script>
+
+        <script>
+    var ctx = document.getElementById('myChart2').getContext("2d");
+
+var barStroke = ctx.createLinearGradient(700, 0, 120, 0);
+barStroke.addColorStop(0, 'rgba(0, 255, 188, 0.6)');
+barStroke.addColorStop(1, 'rgba(0, 205, 194, 0.6)');
+
+var barFill = ctx.createLinearGradient(700, 0, 120, 0);
+barFill.addColorStop(0, "rgba(0, 255, 188, 0.6)");
+barFill.addColorStop(1, "rgba(0, 205, 194, 0.6)");
+
+var barFillHover = ctx.createLinearGradient(700, 0, 120, 0);
+barFillHover.addColorStop(0, "rgba(0, 255, 188, 0.8)");
+barFillHover.addColorStop(1, "rgba(0, 205, 194, 0.6)");
+
+var myChart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+        labels: ["Profit Totale", "Profit jour"],
+        datasets: [{
+            label: "Data",
+            borderColor: barStroke,
+            borderWidth: 1,
+            fill: true,
+            backgroundColor: barFill,
+            hoverBackgroundColor: barFillHover,
+            data: [<?php echo $var3; ?>, <?php  $var4; ?>]
+        }]
+    },
+    options: {
+        animation: {
+            easing: "easeOutQuart"
+        },
+        legend: {
+            position: "bottom",
+            display: false
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    fontColor: "#000",
+                    fontStyle: "bold",
+                    beginAtZero: true,
+                    padding: 15,
+                    //display: false - remove this and commenting to display: false
+                },
+                gridLines: {
+                    drawTicks: false,
+                    display: false,
+                    color: "transparent",
+                    zeroLineColor: "transparent"
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display: false,
+                    color: "transparent",
+                    zeroLineColor: "transparent"
+                },
+                ticks: {
+                    padding: 15,
+                    beginAtZero: true,
+                    fontColor: "#000",
+                    fontStyle: "bold",
+                    maxTicksLimit: 20,
+                    //display: false - remove this and commenting to display: false
+                }
+            }]
+        }
+    }
+});
     </script>
 
 </body>
